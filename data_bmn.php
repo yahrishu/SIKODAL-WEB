@@ -288,9 +288,14 @@ session_start();
               <i class="bi bi-circle"></i><span>Data Komiditi</span>
             </a>
           </li>
-           <li>
+          <li>
             <a href="data_indhan.php">
               <i class="bi bi-circle"></i><span>Data Indhan</span>
+            </a>
+          </li>
+          <li>
+            <a href="data_alutsista.php">
+              <i class="bi bi-circle"></i><span>Data Alutsista</span>
             </a>
           </li>
         </ul> 
@@ -359,11 +364,10 @@ session_start();
       <script>
       function showMessage() {
         Swal.fire({
-          title: 'Created By',
+          title: 'Developer By',
           html: `
             <div style="text-align:center;">
               <img src="assets/img/kemhanlogo.png" alt="Logo 1" width="80" style="margin:5px;">
-              <img src="assets/img/swj.png" alt="Logo 2" width="60" style="margin:5px;">
             </div>
             <br>
             Cahyadi Adiwijaya, S.Kom., M.Si(Han)<br>
@@ -418,9 +422,10 @@ session_start();
                         <th>SAT</th>
                         <th>URAIAN</th>
                         <th>KODEFIKASI SISTEM NSN</th>
+                        <th>INC</th>
                         <th>FSG</th>
                         <th>FSC</th>
-                        <th>FSG FSC</th>
+                        <th>IIG</th>
                     </tr>
                     <tr>
                         <th></th>
@@ -433,9 +438,10 @@ session_start();
                         <th><select id="filter-SAT" style="width: 100%"></select></th>
                         <th><select id="filter-URAIAN" style="width: 100%"></select></th>
                         <th><select id="filter-KODEFIKASI_SISTEM_NSN" style="width: 100%"></select></th>
+                        <th><select id="filter-INC" style="width: 100%"></select></th>
                         <th><select id="filter-FSG" style="width: 100%"></select></th>
                         <th><select id="filter-FSC" style="width: 100%"></select></th>
-                        <th><select id="filter-FSG_FSC" style="width: 100%"></select></th>
+                        <th><select id="filter-IIG" style="width: 100%"></select></th>
                     </tr>
                     </thead>
                 <tbody>
@@ -557,8 +563,8 @@ session_start();
                     $(document).ready(function() {
                         var columnNames = [
                            "view", "GOL", "BID", "KEL", "SUB_KEL", "SUB_SUB_KEL", 
-                            "KODEFIKASI_BMN", "SAT", "URAIAN", "KODIFIKASI_SISTEM_NSN", 
-                            "FSG", "FSC", "FSG_FSC"
+                            "KODEFIKASI_BMN", "SAT", "URAIAN", "KODIFIKASI_SISTEM_NSN", "INC", 
+                            "FSG", "FSC", "IIG"
                         ];
 
                         var table = $('#example1').DataTable({
@@ -584,9 +590,10 @@ session_start();
                                 { data: "SAT" },
                                 { data: "URAIAN" },
                                 { data: "KODIFIKASI_SISTEM_NSN" },
+                                { data: "INC" },
                                 { data: "FSG" },
                                 { data: "FSC" },
-                                { data: "FSG_FSC" }
+                                { data: "IIG" }
                                 ],
                             initComplete: function(settings, json) {
                                 var api = this.api();

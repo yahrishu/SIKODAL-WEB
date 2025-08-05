@@ -348,6 +348,18 @@ session_start();
         </ul> 
       </li><!-- End Tables Nav -->
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav6" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Management User</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav6" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="data_user.php">
+              <i class="bi bi-circle"></i><span>User Pengguna</span>
+            </a>
+          </li>
+        </ul> 
+      </li><!-- End Tables Nav -->
+      <li class="nav-item">
         <a href="#" class="nav-link" onclick="showMessage()">
           <i class="bi bi-info"></i><span>Info</span>
         </a>
@@ -362,7 +374,6 @@ session_start();
           html: `
             <div style="text-align:center;">
               <img src="assets/img/kemhanlogo.png" alt="Logo 1" width="80" style="margin:5px;">
-              <img src="assets/img/swj.png" alt="Logo 2" width="60" style="margin:5px;">
             </div>
             <br>
             Cahyadi Adiwijaya, S.Kom., M.Si(Han)<br>

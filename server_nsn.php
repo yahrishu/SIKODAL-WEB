@@ -92,6 +92,7 @@ while ($row = $result->fetch_assoc()) {
     $sub_array = [];
 
     // Tombol aksi
+    
     $sub_array['cetak'] = '<a href="cetak_nsn.php?id=' . $row['id'] . '" class="btn btn-success btn-sm rounded-2" title="Cetak"><i class="bi bi-printer-fill"></i></a>';
     $sub_array['view'] = '<button type="button" name="view" id="'.$row['id'].'" class="btn btn-primary btn-sm view_data" data-id="'.$row['id'].'"><i class="bi bi-info"></i></button>';
 

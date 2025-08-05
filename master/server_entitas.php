@@ -8,66 +8,31 @@
 
     $columns = [
         'NCAGE',
-        'NAME',
-        'NCAGE_Status',
-        'Creation_Date',
-        'Last_Update_Date',
-        'TOEC',
-        'Address',
-        'Country',
+        'Entity_Name',
+        'Street',
         'City',
-        'US_State',
+        'Country',
         'State',
-        'US_Post_Code',
-        'Post_Office_Box',
-        'Post_Address',
-        'Post_Code',
-        'Phone',
-        'Fax',
-        'Identification',
-        'Mail',
-        'Website',
-        'UFDC',
-        'UNSPSC',
-        'NSICC',
-        'NAIC',
-        'NACE',
-        'CPVC',
-        'NCAGE_Replacement',
-        'NCAGE_Former'
+        'TOEC',
+        'DLC_International',
+        'Dok_Sertifikat',
+        'Dok_NCAGE_NSPA'
     ];
 
     
     $index_columns = [
-    0  => 'VIEW',
+    0  => 'AKSI',
     1  => 'NCAGE',
-    2  => 'NAME',
-    3  => 'NCAGE_Status',
-    4  => 'Creation_Date',
-    5  => 'Last_Update_Date',
-    6  => 'TOEC',
-    7  => 'Address',
-    8  => 'Country',
-    9  => 'City',
-    10 => 'US_State',
-    11 => 'State',
-    12 => 'US_Post_Code',
-    13 => 'Post_Office_Box',
-    14 => 'Post_Address',
-    15 => 'Post_Code',
-    16 => 'Phone',
-    17 => 'Fax',
-    18 => 'Identification',
-    19 => 'Mail',
-    20 => 'Website',
-    21 => 'UFDC',
-    22 => 'UNSPSC',
-    23 => 'NSICC',
-    24 => 'NAIC',
-    25 => 'NACE',
-    26 => 'CPVC',
-    27 => 'NCAGE_Replacement',
-    28 => 'NCAGE_Former'
+    2  => 'Entity_Name',
+    3  => 'Street',
+    4  => 'City',
+    5  => 'Country',
+    6  => 'State',
+    7  => 'TOEC',
+    8  => 'DLC_International',
+    9  => 'Dok_Sertifikat',
+    10 => 'Dok_NCAGE_NSPA'
+
 ];
 
 
@@ -125,24 +90,30 @@
         $sub_array = [];
 
         // Tombol CETAK
-        $sub_array['view'] = '<button type="button" name="view" id="'.$row['id'].'" class="btn btn-primary btn-sm view_data" data-id="'.$row['id'].'">
-        <i class="bi bi-search"></i></button>';
+        $sub_array['aksi'] = '<button type="button" name="view" id="'.$row['id'].'" class="btn btn-primary btn-sm view_data" data-id="'.$row['id'].'">
+        <i class="bi bi-search"></i></button>
+        <button type="button" name="upload" id="'.$row['id'].'" class="btn btn-warning btn-sm upload_doc" data-id="'.$row['id'].'">
+        <i class="bi bi-upload"></i></button>';
 
         // Kolom data
-             foreach ($columns as $col) {
+          foreach ($columns as $col) {
             if ($col == 'NCAGESD') {
                 $sub_array[$col] = $row[$col] . ' <span><i data-id="'.$row[$col].'" class="bi bi-info-square-fill info-ncage"></i></span>';
             } else if ($col == 'TOEC') {
                 $sub_array[$col] = $row[$col] . ' <span><i data-id="'.$row[$col].'" class="bi bi-info-square-fill info-toec"></i></span>';
-            } else if ($col == 'file' && !empty($row[$col])) {
-                $file_url = 'uploads/' . $row[$col]; // Sesuaikan folder file
-                $sub_array[$col] = '<a href="'.$file_url.'" target="_blank">'.$row[$col].'</a>';
+            } else if ($col == 'Dok_Sertifikat' && !empty($row[$col])) {
+                $file_url = 'uploads/' . $row[$col];
+                $sub_array[$col] = '<a href="'.$file_url.'" target="_blank">'.$row['Entity_Name'].'</a>';
+            } else if ($col == 'Dok_NCAGE_NSPA' && !empty($row[$col])) {
+                $file_url = 'uploads/' . $row[$col];
+                $sub_array[$col] = '<a href="'.$file_url.'" target="_blank">'.$row['Entity_Name'].'</a>';
             } else {
                 $sub_array[$col] = $row[$col];
             }
         }
 
-            $data[] = $sub_array;
+        $data[] = $sub_array;
+
         }
 
     // Buat filters

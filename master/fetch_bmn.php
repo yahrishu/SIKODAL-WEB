@@ -15,8 +15,8 @@ if (isset($_POST['id'])) {
 
         $fields = [
             'GOL', 'BID', 'KEL', 'SUB_KEL', 'SUB_SUB_KEL',
-            'KODEFIKASI_BMN', 'SAT', 'KODIFIKASI_SISTEM_NSN',
-            'FSG', 'FSC', 'FSG_FSC'
+            'KODEFIKASI_BMN', 'SAT', 'KODIFIKASI_SISTEM_NSN', 'INC',
+            'FSG', 'FSC', 'IIG'
         ];
 
         foreach ($fields as $field) {

@@ -4,23 +4,10 @@ include "koneksi.php";
 // Validasi parameter
 $column = isset($_GET['column']) ? $_GET['column'] : '';
 $allowed_columns = [
-    'NSC',
-    'NIIN',
-    'NIIN_',
-    'NSN',
-    'N_S_N',
-    'Status',
-    'Assignment_Date',
-    'Last_Update_Date',
-    'INC',
-    'Item_Name',
-    'TIIC',
-    'CPV',
-    'Replacement',
+    'NCAGE',
     'NCAGE_Name',
-    'NCAGE_Status',
-    'NCAGE_Country',
-    'NCAGE_City',
+    'N_S_N',
+    'Item_Name',
     'Reference_Number',
     'RNFC',
     'RNCC',
@@ -29,10 +16,9 @@ $allowed_columns = [
     'RNJC',
     'RNAAC',
     'DAC',
-    'Procurement_Status',
-    'NCAGE_Replacements',
     'Users',
-    'CHARACTERISTIC'
+    'CHARACTERISTIC',
+    'GAMBAR'
 ];
 
 // Validasi kolom
@@ -42,7 +28,7 @@ if (!in_array($column, $allowed_columns)) {
 }
 
 // Query distinct
-$sql = "SELECT DISTINCT `$column` FROM ios WHERE `$column` IS NOT NULL AND `$column` <> '' ORDER BY `$column` LIMIT 3000";
+$sql = "SELECT DISTINCT `$column` FROM ios WHERE `$column` IS NOT NULL AND `$column` <> '' ORDER BY `$column`";
 $res = $koneksi->query($sql);
 
 $data = [];

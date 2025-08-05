@@ -4,33 +4,15 @@ include "koneksi.php";
 $column = $_GET['column'];
 $allowed_columns = [
         'NCAGE',
-        'NAME',
-        'NCAGE_Status',
-        'Creation_Date',
-        'Last_Update_Date',
-        'TOEC',
-        'Address',
-        'Country',
+        'Entity_Name',
+        'Street',
         'City',
-        'US_State',
+        'Country',
         'State',
-        'US_Post_Code',
-        'Post_Office_Box',
-        'Post_Address',
-        'Post_Code',
-        'Phone',
-        'Fax',
-        'Identification',
-        'Mail',
-        'Website',
-        'UFDC',
-        'UNSPSC',
-        'NSICC',
-        'NAIC',
-        'NACE',
-        'CPVC',
-        'NCAGE_Replacement',
-        'NCAGE_Former'
+        'TOEC',
+        'DLC_International',
+        'Dok_Sertifikat',
+        'Dok_NCAGE_NSPA'
 ];
 
 // validasi kolom

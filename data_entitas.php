@@ -359,11 +359,10 @@ session_start();
       <script>
       function showMessage() {
         Swal.fire({
-          title: 'Created By',
+          title: 'Developer By',
           html: `
             <div style="text-align:center;">
               <img src="assets/img/kemhanlogo.png" alt="Logo 1" width="80" style="margin:5px;">
-              <img src="assets/img/swj.png" alt="Logo 2" width="60" style="margin:5px;">
             </div>
             <br>
             Cahyadi Adiwijaya, S.Kom., M.Si(Han)<br>
@@ -408,66 +407,30 @@ session_start();
                 <table id="example1" class="table table-bordered table-striped nowrap" style="width: 100% !important;">                
                 <thead>
                   <tr>
-                    <th>VIEW</th>
+                    <th>AKSI</th>
                     <th style="width: 100px;">NCAGE</th>
-                    <th style="width: 100px;">NAME</th>
-                    <th style="width: 100px;">NCAGE_Status</th>
-                    <th style="width: 100px;">Creation_Date</th>
-                    <th style="width: 100px;">Last_Update_Date</th>
+                    <th style="width: 100px;">ENTITY NAME</th>
+                    <th style="width: 100px;">STREET</th>
+                    <th style="width: 100px;">CITY</th>
+                    <th style="width: 100px;">COUNTRY</th>
+                    <th style="width: 100px;">STATE</th>
                     <th style="width: 100px;">TOEC</th>
-                    <th style="width: 100px;">Address</th>
-                    <th style="width: 100px;">Country</th>
-                    <th style="width: 100px;">City</th>
-                    <th style="width: 100px;">US_State</th>
-                    <th style="width: 100px;">State</th>
-                    <th style="width: 100px;">US_Post_Code</th>
-                    <th style="width: 100px;">Post_Office_Box</th>
-                    <th style="width: 100px;">Post_Address</th>
-                    <th style="width: 100px;">Post_Code</th>
-                    <th style="width: 100px;">Phone</th>
-                    <th style="width: 100px;">Fax</th>
-                    <th style="width: 100px;">Identification</th>
-                    <th style="width: 100px;">Mail</th>
-                    <th style="width: 100px;">Website</th>
-                    <th style="width: 100px;">UFDC</th>
-                    <th style="width: 100px;">UNSPSC</th>
-                    <th style="width: 100px;">NSICC</th>
-                    <th style="width: 100px;">NAIC</th>
-                    <th style="width: 100px;">NACE</th>
-                    <th style="width: 100px;">CPVC</th>
-                    <th style="width: 100px;">NCAGE_Replacement</th>
-                    <th style="width: 100px;">NCAGE_Former</th>
+                    <th style="width: 100px;">DATE LAST CHANGE INTERNATIONAL</th>
+                    <th style="width: 100px;">DOC PUSKOD</th>
+                    <th style="width: 100px;">DOC NSPA</th>
                   </tr>
                   <tr>
                     <th></th>
                     <th><select id="filter-NCAGE" style="width: 100%"></select></th>
-                    <th><select id="filter-NAME" style="width: 100%"></select></th>
-                    <th><select id="filter-NCAGE_Status" style="width: 100%"></select></th>
-                    <th><select id="filter-Creation_Date" style="width: 100%"></select></th>
-                    <th><select id="filter-Last_Update_Date" style="width: 100%"></select></th>
-                    <th><select id="filter-TOEC" style="width: 100%"></select></th>
-                    <th><select id="filter-Address" style="width: 100%"></select></th>
-                    <th><select id="filter-Country" style="width: 100%"></select></th>
+                    <th><select id="filter-Entity_Name" style="width: 100%"></select></th>
+                    <th><select id="filter-Street" style="width: 100%"></select></th>
                     <th><select id="filter-City" style="width: 100%"></select></th>
-                    <th><select id="filter-US_State" style="width: 100%"></select></th>
+                    <th><select id="filter-Country" style="width: 100%"></select></th>
                     <th><select id="filter-State" style="width: 100%"></select></th>
-                    <th><select id="filter-US_Post_Code" style="width: 100%"></select></th>
-                    <th><select id="filter-Post_Office_Box" style="width: 100%"></select></th>
-                    <th><select id="filter-Post_Address" style="width: 100%"></select></th>
-                    <th><select id="filter-Post_Code" style="width: 100%"></select></th>
-                    <th><select id="filter-Phone" style="width: 100%"></select></th>
-                    <th><select id="filter-Fax" style="width: 100%"></select></th>
-                    <th><select id="filter-Identification" style="width: 100%"></select></th>
-                    <th><select id="filter-Mail" style="width: 100%"></select></th>
-                    <th><select id="filter-Website" style="width: 100%"></select></th>
-                    <th><select id="filter-UFDC" style="width: 100%"></select></th>
-                    <th><select id="filter-UNSPSC" style="width: 100%"></select></th>
-                    <th><select id="filter-NSICC" style="width: 100%"></select></th>
-                    <th><select id="filter-NAIC" style="width: 100%"></select></th>
-                    <th><select id="filter-NACE" style="width: 100%"></select></th>
-                    <th><select id="filter-CPVC" style="width: 100%"></select></th>
-                    <th><select id="filter-NCAGE_Replacement" style="width: 100%"></select></th>
-                    <th><select id="filter-NCAGE_Former" style="width: 100%"></select></th>
+                    <th><select id="filter-TOEC" style="width: 100%"></select></th>
+                    <th><select id="filter-DLC_International" style="width: 100%"></select></th>
+                    <th><select id="filter-Dok_Sertifikat" style="width: 100%"></select></th>
+                    <th><select id="filter-Dok_NCAGE_NSPA" style="width: 100%"></select></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -584,35 +547,17 @@ session_start();
  <script>
                     $(document).ready(function() {
                         var columnNames = [
-                            "VIEW",
+                            "AKSI",
                             "NCAGE",
-                            "NAME",
-                            "NCAGE_Status",
-                            "Creation_Date",
-                            "Last_Update_Date",
-                            "TOEC",
-                            "Address",
-                            "Country",
+                            "Entity_Name",
+                            "Street",
                             "City",
-                            "US_State",
+                            "Country",
                             "State",
-                            "US_Post_Code",
-                            "Post_Office_Box",
-                            "Post_Address",
-                            "Post_Code",
-                            "Phone",
-                            "Fax",
-                            "Identification",
-                            "Mail",
-                            "Website",
-                            "UFDC",
-                            "UNSPSC",
-                            "NSICC",
-                            "NAIC",
-                            "NACE",
-                            "CPVC",
-                            "NCAGE_Replacement",
-                            "NCAGE_Former"
+                            "TOEC",
+                            "DLC_International",
+                            "Dok_Sertifikat",
+                            "Dok_NCAGE_NSPA"
                         ];
 
                         var table = $('#example1').DataTable({
@@ -628,35 +573,17 @@ session_start();
                                 type: "POST"
                             },
                             columns: [
-                                { data: "view", width: "50px", orderable: false },
+                                { data: "aksi", width: "50px", orderable: false },
                                 { data: "NCAGE" },
-                                { data: "NAME" },
-                                { data: "NCAGE_Status" },
-                                { data: "Creation_Date" },
-                                { data: "Last_Update_Date" },
-                                { data: "TOEC" },
-                                { data: "Address" },
-                                { data: "Country" },
+                                { data: "Entity_Name" },
+                                { data: "Street" },
                                 { data: "City" },
-                                { data: "US_State" },
+                                { data: "Country" },
                                 { data: "State" },
-                                { data: "US_Post_Code" },
-                                { data: "Post_Office_Box" },
-                                { data: "Post_Address" },
-                                { data: "Post_Code" },
-                                { data: "Phone" },
-                                { data: "Fax" },
-                                { data: "Identification" },
-                                { data: "Mail" },
-                                { data: "Website" },
-                                { data: "UFDC" },
-                                { data: "UNSPSC" },
-                                { data: "NSICC" },
-                                { data: "NAIC" },
-                                { data: "NACE" },
-                                { data: "CPVC" },
-                                { data: "NCAGE_Replacement" },
-                                { data: "NCAGE_Former" }
+                                { data: "TOEC" },
+                                { data: "DLC_International" },
+                                { data: "Dok_Sertifikat" },
+                                { data: "Dok_NCAGE_NSPA" }
                             ],
                             initComplete: function(settings, json) {
                                 var api = this.api();
@@ -905,6 +832,47 @@ session_start();
                             break;
                           case "H" :
                             result = "Nomor referensi asli dari dokumen teknik dengan kondisi spesial, digunakan hanya untuk satu pabrik";
+                            break;
+                          default :
+                            result = "ID TIDAK DITEMUKAN";
+                            break;
+                        }
+                        // alert(result);
+                        Swal.fire({
+                          text: result,
+                          icon: "info"
+                        });
+                    });
+                    $("#example1").on("click", ".info-toec", function() {
+                      var result = "";
+                        var info_id = $(this).data('id');
+                        switch (info_id) {
+                          case "E" : 
+                            result = "Non-US Manufactures";
+                            break;
+                          case "G" :
+                            result = "Service providers - Organisational entities that provide intangible services rather than products, such as the following, Service organisations, Professional organisations, including engineering, construction and mining firms, Banks and universities, Providers of services, including consultation, training, research studies, These NCAGEs may be assigned to individuals.";
+                            break;
+                          case "H" : 
+                            result = "OBSOLETE / Invalid";
+                            break;
+                          case "R" :
+                            result = "REPLACED OR CONVERTED RECORD, WITH REPLACEMENT";
+                            break;
+                          case "F" :
+                            result = "Non-manufacturers - Entities of the following types which do not manufacture: - Vendors/distributors - Sales offices - Retail establishments -Wholesale or jobbing establishments";
+                            break;
+                          case "A" :
+                            result = "US/Canada manufacturers";
+                            break;
+                          case "I" :
+                            result = "AD/135 allocated special codes (example: IREF0)";
+                            break;
+                          case "C" :
+                            result = "Civilian Standards and Standards Organisations, including non-military government standards and standards organisations(example: ISO, DIN, BS, ANSI, etc.)";
+                            break;
+                          case "M" :
+                            result = "Military Standards and Standards Organisations (example: STANAGS, MILSPECs, DEFSTANs, etc)";
                             break;
                           default :
                             result = "ID TIDAK DITEMUKAN";

@@ -361,11 +361,10 @@ session_start();
       <script>
       function showMessage() {
         Swal.fire({
-          title: 'Created By',
+          title: 'Developer By',
           html: `
             <div style="text-align:center;">
               <img src="assets/img/kemhanlogo.png" alt="Logo 1" width="80" style="margin:5px;">
-              <img src="assets/img/swj.png" alt="Logo 2" width="60" style="margin:5px;">
             </div>
             <br>
             Cahyadi Adiwijaya, S.Kom., M.Si(Han)<br>
@@ -403,7 +402,7 @@ session_start();
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title"><i>DATA ENTITAS</i></h5>
+              <h5 class="card-title"><i>DATA NCAGE</i></h5>
               <!-- <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p> -->
 
               <!-- Table with stripped rows -->

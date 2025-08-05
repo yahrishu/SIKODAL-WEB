@@ -1,63 +1,53 @@
 <?php
 include "koneksi.php";
 
-// $column = $_GET['column'];
-// $allowed_columns = [
-//     'INC', 'LANGUAGE_CODE', 'DATE_ESTABLISHED', 'ITEM_NAME', 'ITEM_NAME_DEFINITION_IDN', 'ITEM_NAME_DEFINITION',
-//     'RELATED_INC', 'NMCRL_HITS'
-// ];
+$column = $_GET['column'];
+$allowed_columns = [
+    'INC', 'ITEM_NAME', 'ITEM_NAME_DEFINITION', 'URAIAN_SINGKAT_NAMA_BARANG',
+    'TIPE_NAMA_BARANG', 'STATUS', 'FIIG', 'FSG_FSC'
+];
 
-// // validasi kolom
-// if (!in_array($column, $allowed_columns)) {
-//   echo json_encode([]);
-//   exit;
-// }
-
-// // Ambil distinct data
-// $sql = "SELECT DISTINCT `$column` FROM namabaku WHERE `$column` IS NOT NULL AND `$column` <> '' ORDER BY `$column`";
-// $res = $koneksi->query($sql);
-
-// $data = [];
-// while ($row = $res->fetch_assoc()) {
-//   $data[] = $row[$column];
-// }
-
-// echo json_encode($data);
+if (!in_array($column, $allowed_columns)) {
+  echo json_encode([]);
+  exit;
+}
 
 $search = $_GET['q'] ?? '';
 $page = intval($_GET['page'] ?? 1);
 $limit = 25;
 $offset = ($page - 1) * $limit;
 
-// Query data sesuai pencarian
-$sql = "SELECT ITEM_NAME FROM nama_baku_nmcrl WHERE ITEM_NAME LIKE ? LIMIT ?, ?";
+// Query data
+$sql = "SELECT DISTINCT `$column` FROM nama_baku_nmcrl 
+        WHERE `$column` IS NOT NULL AND `$column` <> '' AND `$column` LIKE ? 
+        ORDER BY `$column` LIMIT ?, ?";
 $stmt = $koneksi->prepare($sql);
 $like = "%$search%";
 $stmt->bind_param("sii", $like, $offset, $limit);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$items = [];
+$data = [];
 while ($row = $result->fetch_assoc()) {
-    $items[] = [
-        "id" => $row['ITEM_NAME'],
-        "text" => $row['ITEM_NAME']
+    $data[] = [
+        "id" => $row[$column],
+        "text" => $row[$column]
     ];
 }
 
-// Hitung apakah masih ada data selanjutnya
-$sql2 = "SELECT COUNT(*) as total FROM nama_baku_nmcrl WHERE ITEM_NAME LIKE ?";
+// Hitung total untuk pagination
+$sql2 = "SELECT COUNT(DISTINCT `$column`) AS total FROM nama_baku_nmcrl 
+        WHERE `$column` IS NOT NULL AND `$column` <> '' AND `$column` LIKE ?";
 $stmt2 = $koneksi->prepare($sql2);
 $stmt2->bind_param("s", $like);
 $stmt2->execute();
 $res2 = $stmt2->get_result()->fetch_assoc();
 $total = $res2['total'];
-
 $hasMore = ($offset + $limit) < $total;
 
 echo json_encode([
-    "results" => $items,
-    "hasMore" => $hasMore
+    "results" => $data,
+    "pagination" => ["more" => $hasMore]
 ]);
 
 ?>

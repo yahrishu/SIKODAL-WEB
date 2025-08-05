@@ -348,6 +348,18 @@ session_start();
         </ul> 
       </li><!-- End Tables Nav -->
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav6" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Management User</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav6" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="data_user.php">
+              <i class="bi bi-circle"></i><span>User Pengguna</span>
+            </a>
+          </li>
+        </ul> 
+      </li><!-- End Tables Nav -->
+      <li class="nav-item">
         <a href="#" class="nav-link" onclick="showMessage()">
           <i class="bi bi-info"></i><span>Info</span>
         </a>
@@ -358,11 +370,10 @@ session_start();
       <script>
       function showMessage() {
         Swal.fire({
-          title: 'Created By',
+          title: 'Developer By',
           html: `
             <div style="text-align:center;">
               <img src="assets/img/kemhanlogo.png" alt="Logo 1" width="80" style="margin:5px;">
-              <img src="assets/img/swj.png" alt="Logo 2" width="60" style="margin:5px;">
             </div>
             <br>
             Cahyadi Adiwijaya, S.Kom., M.Si(Han)<br>
@@ -407,69 +418,41 @@ session_start();
                 <thead>
                   <tr>
                     <tr>
-                        <th>VIEW</th>
-                        <th>NSC</th>
-                        <th>NIIN</th>
-                        <th>NIIN_</th>
-                        <th>NSN</th>
-                        <th>N_S_N</th>
-                        <th>Status</th>
-                        <th>Assignment_Date</th>
-                        <th>Last_Update_Date</th>
-                        <th>INC</th>
-                        <th>Item_Name</th>
-                        <th>TIIC</th>
-                        <th>CPV</th>
-                        <th>Replacement</th>
-                        <th>NCAGE_Name</th>
-                        <th>NCAGE_Status</th>
-                        <th>NCAGE_Country</th>
-                        <th>NCAGE_City</th>
-                        <th>Reference_Number</th>
-                        <th>RNFC</th>
-                        <th>RNCC</th>
-                        <th>RNVC</th>
-                        <th>RNSC</th>
-                        <th>RNJC</th>
-                        <th>RNAAC</th>
-                        <th>DAC</th>
-                        <th>Procurement_Status</th>
-                        <th>NCAGE_Replacements</th>
-                        <th>Users</th>
-                        <th>CHARACTERISTIC</th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th><select id="filter-NSC" style="width: 100%"></select></th>
-                        <th><select id="filter-NIIN" style="width: 100%"></select></th>
-                        <th><select id="filter-NIIN_" style="width: 100%"></select></th>
-                        <th><select id="filter-NSN" style="width: 100%"></select></th>
-                        <th><select id="filter-N_S_N" style="width: 100%"></select></th>
-                        <th><select id="filter-Status" style="width: 100%"></select></th>
-                        <th><select id="filter-Assignment_Date" style="width: 100%"></select></th>
-                        <th><select id="filter-Last_Update_Date" style="width: 100%"></select></th>
-                        <th><select id="filter-INC" style="width: 100%"></select></th>
-                        <th><select id="filter-Item_Name" style="width: 100%"></select></th>
-                        <th><select id="filter-TIIC" style="width: 100%"></select></th>
-                        <th><select id="filter-CPV" style="width: 100%"></select></th>
-                        <th><select id="filter-Replacement" style="width: 100%"></select></th>
-                        <th><select id="filter-NCAGE_Name" style="width: 100%"></select></th>
-                        <th><select id="filter-NCAGE_Status" style="width: 100%"></select></th>
-                        <th><select id="filter-NCAGE_Country" style="width: 100%"></select></th>
-                        <th><select id="filter-NCAGE_City" style="width: 100%"></select></th>
-                        <th><select id="filter-Reference_Number" style="width: 100%"></select></th>
-                        <th><select id="filter-RNFC" style="width: 100%"></select></th>
-                        <th><select id="filter-RNCC" style="width: 100%"></select></th>
-                        <th><select id="filter-RNVC" style="width: 100%"></select></th>
-                        <th><select id="filter-RNSC" style="width: 100%"></select></th>
-                        <th><select id="filter-RNJC" style="width: 100%"></select></th>
-                        <th><select id="filter-RNAAC" style="width: 100%"></select></th>
-                        <th><select id="filter-DAC" style="width: 100%"></select></th>
-                        <th><select id="filter-Procurement_Status" style="width: 100%"></select></th>
-                        <th><select id="filter-NCAGE_Replacements" style="width: 100%"></select></th>
-                        <th><select id="filter-Users" style="width: 100%"></select></th>
-                        <th><select id="filter-CHARACTERISTIC" style="width: 100%"></select></th>
-                    </tr>
+                    <th>AKSI</th>
+                    <th style="width: 100px;">NCAGE</th>
+                    <th style="width: 100px;">NCAGE_Name</th>
+                    <th style="width: 100px;">N_S_N</th>
+                    <th style="width: 100px;">Item_Name</th>
+                    <th style="width: 100px;">Reference_Number</th>
+                    <th style="width: 100px;">RNFC</th>
+                    <th style="width: 100px;">RNCC</th>
+                    <th style="width: 100px;">RNVC</th>
+                    <th style="width: 100px;">RNSC</th>
+                    <th style="width: 100px;">RNJC</th>
+                    <th style="width: 100px;">RNAAC</th>
+                    <th style="width: 100px;">DAC</th>
+                    <th style="width: 100px;">Users</th>
+                    <th style="width: 100px;">CHARACTERISTIC</th>
+                    <th style="width: 100px;">GAMBAR</th>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th><select id="filter-NCAGE" style="width: 100%"></select></th>
+                    <th><select id="filter-NCAGE_Name" style="width: 100%"></select></th>
+                    <th><select id="filter-N_S_N" style="width: 100%"></select></th>
+                    <th><select id="filter-Item_Name" style="width: 100%"></select></th>
+                    <th><select id="filter-Reference_Number" style="width: 100%"></select></th>
+                    <th><select id="filter-RNFC" style="width: 100%"></select></th>
+                    <th><select id="filter-RNCC" style="width: 100%"></select></th>
+                    <th><select id="filter-RNVC" style="width: 100%"></select></th>
+                    <th><select id="filter-RNSC" style="width: 100%"></select></th>
+                    <th><select id="filter-RNJC" style="width: 100%"></select></th>
+                    <th><select id="filter-RNAAC" style="width: 100%"></select></th>
+                    <th><select id="filter-DAC" style="width: 100%"></select></th>
+                    <th><select id="filter-Users" style="width: 100%"></select></th>
+                    <th><select id="filter-CHARACTERISTIC" style="width: 100%"></select></th>
+                    <th><select id="filter-GAMBAR" style="width: 100%"></select></th>
+                </tr>
                 </thead>
                 <tbody>
                 </table>
@@ -510,31 +493,45 @@ session_start();
                   </div>
                 </div>
                 <div id="dataModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Import Data IOS </h5>
-                            
-                        </div>
-                          <div class="modal-body" id="detail_import">
-                              <form action="import_ios.php" method="POST" enctype="multipart/form-data">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">FILE IMPORT</label>
-                                          <div class="col-sm-8">
-                                            <input type="file" name="uploadfileios" id="uploadfileios" multiple class="form-control" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" >
-                                            <a href="download.php?file=nsn.xlsx">Download Format Import Excel</a>
-                                          </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="submit" class="btn btn-primary pull-right">Save</a></button>
-                                    </div>            
-                              </form>
+                  <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Import Data IOS </h5>
+                              
                           </div>
-                        <div class="modal-footer">
-                        </div>
-                    </div>
-                </div>
+                            <div class="modal-body" id="detail_import">
+                                <form action="import_ios.php" method="POST" enctype="multipart/form-data">
+                                      <div class="form-group row">
+                                          <label class="col-sm-4 col-form-label">FILE IMPORT</label>
+                                            <div class="col-sm-8">
+                                              <input type="file" name="uploadfileios" id="uploadfileios" multiple class="form-control" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" >
+                                              <a href="download.php?file=ios.xlsx">Download Format Import Excel</a>
+                                            </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary pull-right">Save</a></button>
+                                      </div>            
+                                </form>
+                            </div>
+                          <div class="modal-footer">
+                          </div>
+                      </div>
+                  </div>
               </div>
+              <div id="dataModal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">UPLOAD GAMBAR IOS</h5>
+                          </div>
+                          <div class="modal-body" id="detail_upload_gambar_ios">
+                              <!-- Data akan dimuat di sini -->
+                          </div>
+                          <div class="modal-footer">
+                              <!-- optional tombol -->
+                          </div>
+                      </div>
+                  </div>
                 <script>
                 $(document).ready(function () {
                     $(document).on('click', '.view_data', function () {
@@ -550,6 +547,20 @@ session_start();
                         });
                     });
                 });
+                $(document).ready(function () {
+                $(document).on('click', '.upload-gambar-ios', function () {
+                    var user_id = $(this).data('id');
+                    $.ajax({
+                        url: "fetch_upload_gambar_ios.php",
+                        method: "POST",
+                        data: { id: user_id },
+                        success: function (data) {
+                            $('#detail_upload_gambar_ios').html(data);
+                            $('#dataModal3').modal('show');
+                        }
+                    });
+                });
+            });
             </script>
               <!-- End Table with stripped rows -->
             </div>
@@ -618,11 +629,9 @@ session_start();
   <script>
                     $(document).ready(function() {
                         var columnNames = [
-                            "NSC", "NIIN", "NIIN_", "NSN", "N_S_N", "Status", "Assignment_Date", 
-                            "Last_Update_Date", "INC", "Item_Name", "TIIC", "CPV", "Replacement", 
-                            "NCAGE_Name", "NCAGE_Status", "NCAGE_Country", "NCAGE_City", "Reference_Number", 
-                            "RNFC", "RNCC", "RNVC", "RNSC", "RNJC", "RNAAC", "DAC", 
-                            "Procurement_Status", "NCAGE_Replacements", "Users", "CHARACTERISTIC"
+                            "AKSI", "NCAGE", "NCAGE_Name", "N_S_N", "Item_Name", 
+                            "Reference_Number", "RNFC", "RNCC", "RNVC", "RNSC", "RNJC", 
+                            "RNAAC", "DAC", "Users", "CHARACTERISTIC", "GAMBAR"
                         ];
 
                         var table = $('#example1').DataTable({
@@ -638,24 +647,11 @@ session_start();
                                 type: "POST"
                             },
                             columns: [
-                                { data: "view", width: "50px", orderable: false },
-                                { data: "NSC" },
-                                { data: "NIIN" },
-                                { data: "NIIN_" },
-                                { data: "NSN" },
-                                { data: "N_S_N" },
-                                { data: "Status" },
-                                { data: "Assignment_Date" },
-                                { data: "Last_Update_Date" },
-                                { data: "INC" },
-                                { data: "Item_Name" },
-                                { data: "TIIC" },
-                                { data: "CPV" },
-                                { data: "Replacement" },
+                                { data: "aksi", width: "50px", orderable: false },
+                                { data: "NCAGE" },
                                 { data: "NCAGE_Name" },
-                                { data: "NCAGE_Status" },
-                                { data: "NCAGE_Country" },
-                                { data: "NCAGE_City" },
+                                { data: "N_S_N" },
+                                { data: "Item_Name" },
                                 { data: "Reference_Number" },
                                 { data: "RNFC" },
                                 { data: "RNCC" },
@@ -664,10 +660,9 @@ session_start();
                                 { data: "RNJC" },
                                 { data: "RNAAC" },
                                 { data: "DAC" },
-                                { data: "Procurement_Status" },
-                                { data: "NCAGE_Replacements" },
                                 { data: "Users" },
-                                { data: "CHARACTERISTIC" }
+                                { data: "CHARACTERISTIC" },
+                                { data: "GAMBAR" }
                             ],
                             initComplete: function(settings, json) {
                                 var api = this.api();
@@ -717,7 +712,21 @@ session_start();
                             }
                         });
                     });
-</script>
+                    </script>
+                    <?php if (isset($_SESSION['sukses'])): ?>
+                                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                        <script>
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Berhasil',
+                                                text: '<?php echo $_SESSION['sukses']; ?>',
+                                                showConfirmButton: false,
+                                                timer: 2000
+                                            });
+                                        </script>
+                                        <?php unset($_SESSION['sukses']); ?>
+                                    <?php endif; ?>
+
 </body>
 
 </html>

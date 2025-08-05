@@ -6,23 +6,10 @@ $table = "ios";
 $primaryKey = "id";
 
 $columns = [
-    'NSC',
-    'NIIN',
-    'NIIN_',
-    'NSN',
-    'N_S_N',
-    'Status',
-    'Assignment_Date',
-    'Last_Update_Date',
-    'INC',
-    'Item_Name',
-    'TIIC',
-    'CPV',
-    'Replacement',
+    'NCAGE',
     'NCAGE_Name',
-    'NCAGE_Status',
-    'NCAGE_Country',
-    'NCAGE_City',
+    'N_S_N',
+    'Item_Name',
     'Reference_Number',
     'RNFC',
     'RNCC',
@@ -31,43 +18,27 @@ $columns = [
     'RNJC',
     'RNAAC',
     'DAC',
-    'Procurement_Status',
-    'NCAGE_Replacements',
     'Users',
-    'CHARACTERISTIC'
+    'CHARACTERISTIC',
+    'GAMBAR'
 ];
 
 $index_columns = [
-   0 => 'VIEW',
-    1 => 'NSC',
-    2 => 'NIIN',
-    3 => 'NIIN_',
-    4 => 'NSN',
-    5 => 'N_S_N',
-    6 => 'Status',
-    7 => 'Assignment_Date',
-    8 => 'Last_Update_Date',
-    9 => 'INC',
-    10 => 'Item_Name',
-    11 => 'TIIC',
-    12 => 'CPV',
-    13 => 'Replacement',
-    14 => 'NCAGE_Name',
-    15 => 'NCAGE_Status',
-    16 => 'NCAGE_Country',
-    17 => 'NCAGE_City',
-    18 => 'Reference_Number',
-    19 => 'RNFC',
-    20 => 'RNCC',
-    21 => 'RNVC',
-    22 => 'RNSC',
-    23 => 'RNJC',
-    24 => 'RNAAC',
-    25 => 'DAC',
-    26 => 'Procurement_Status',
-    27 => 'NCAGE_Replacements',
-    28 => 'Users',
-    29 => 'CHARACTERISTIC'
+    0 => 'AKSI',
+    1  => 'NCAGE',
+    2  => 'NCAGE_Name',
+    3  => 'N_S_N',
+    4  => 'Item_Name',
+    5  => 'Reference_Number',
+    6  => 'RNFC',
+    7  => 'RNCC',
+    8  => 'RNVC',
+    9  => 'RNJC',
+    10 => 'RNAAC',
+    11 => 'DAC',
+    12 => 'Users',
+    13 => 'CHARACTERISTIC',
+    14 => 'GAMBAR'
 ];
 
 // Hitung total records
@@ -82,30 +53,38 @@ if (!empty($request['search']['value'])) {
     foreach ($columns as $col) {
         $search_arr[] = "`$col` LIKE '%$search_value%'";
     }
-    $search_sql = " WHERE " . implode(" OR ", $search_arr);
+    $search_sql = " WHERE (" . implode(" OR ", $search_arr) . ")";
 }
 
-// filter per column
+// Filtering per kolom
 $percolumn = "";
-foreach ($index_columns as $key => $col) {
-    if (!empty($request['columns'][$key]['search']['value'])) {
-        $search = $koneksi->real_escape_string($request['columns'][$key]['search']['value']);
-        $final = !empty($search_sql) ? " AND " : " WHERE ";
-        $percolumn .= $final . "`$col` = '$search'";
+foreach ($columns as $key => $col) {
+    $col_index = $key + 1; // Karena kolom VIEW di posisi 0 (JS), maka data dimulai dari index 1
+
+    if (!empty($request['columns'][$col_index]['search']['value'])) {
+        $search = $koneksi->real_escape_string($request['columns'][$col_index]['search']['value']);
+        if (!empty($search_sql) || !empty($percolumn)) {
+            $percolumn .= " AND `$col` = '$search'";
+        } else {
+            $percolumn .= " WHERE `$col` = '$search'";
+        }
     }
 }
 
-// Total filtered
+// Total filtered records
 $sqlFiltered = "SELECT COUNT(*) FROM $table $search_sql $percolumn";
 $filteredRecords = $koneksi->query($sqlFiltered)->fetch_row()[0];
 
 // Ordering
 $order_sql = "";
 if (!empty($request['order'])) {
-    $col_idx = $request['order'][0]['column'] - 1; // -1 karena CETAK di kolom pertama
-    if ($col_idx >= 0 && $col_idx < count($columns)) {
-        $dir = $request['order'][0]['dir'] === 'asc' ? "ASC" : "DESC";
-        $order_sql = " ORDER BY `{$columns[$col_idx]}` $dir";
+    $col_idx = $request['order'][0]['column'];
+    if ($col_idx > 0) {
+        $col_adj = $col_idx - 1; // offset karena VIEW
+        if ($col_adj < count($columns)) {
+            $dir = $request['order'][0]['dir'] === 'asc' ? "ASC" : "DESC";
+            $order_sql = " ORDER BY `{$columns[$col_adj]}` $dir";
+        }
     }
 }
 
@@ -122,13 +101,24 @@ $data = [];
 while ($row = $result->fetch_assoc()) {
     $sub_array = [];
 
-    // Tombol CETAK
-         $sub_array['view'] = '<button type="button" class="btn btn-info view_data" data-id="'.$row['id'].'"><i class="bi bi-info-square-fill"></i></button>';
+    // Kolom view button
+    $sub_array['aksi'] = '<button type="button" class="btn btn-info view_data" data-id="'.$row['id'].'"><i class="bi bi-info-square-fill"></i></button>
+    <button type="button" class="btn btn-warning upload-gambar-ios" data-id="'.$row['id'].'"><i class="bi bi-upload"></i></button>';
 
-    // Kolom data
-    foreach ($columns as $col) {
+    // Data kolom
+   foreach ($columns as $col) {
+    if ($col == 'GAMBAR') {
+        if (!empty($row[$col]) && $row[$col] !== '0') {
+            $imagePath = 'uploads/' . $row[$col];
+            $sub_array[$col] = '<img src="' . $imagePath . '" alt="Gambar" style="max-width: 100px; height: auto;">';
+        } else {
+            $sub_array[$col] = '-';
+        }
+    } else {
         $sub_array[$col] = $row[$col];
     }
+}
+
 
     $data[] = $sub_array;
 }

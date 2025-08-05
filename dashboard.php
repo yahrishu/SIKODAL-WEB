@@ -283,9 +283,14 @@ if (!isset($_SESSION['username'])) {
               <i class="bi bi-circle"></i><span>Data Komiditi</span>
             </a>
           </li>
-           <li>
+          <li>
             <a href="data_indhan.php">
               <i class="bi bi-circle"></i><span>Data Indhan</span>
+            </a>
+          </li>
+          <li>
+            <a href="data_alutsista.php">
+              <i class="bi bi-circle"></i><span>Data Alutsista</span>
             </a>
           </li>
         </ul> 
@@ -349,11 +354,10 @@ if (!isset($_SESSION['username'])) {
       <script>
       function showMessage() {
         Swal.fire({
-          title: 'Created By',
+          title: 'Developer By',
           html: `
             <div style="text-align:center;">
               <img src="assets/img/kemhanlogo.png" alt="Logo 1" width="80" style="margin:5px;">
-              <img src="assets/img/swj.png" alt="Logo 2" width="60" style="margin:5px;">
             </div>
             <br>
             Cahyadi Adiwijaya, S.Kom., M.Si(Han)<br>
@@ -520,7 +524,7 @@ if (!isset($_SESSION['username'])) {
               <h5 class="card-title">Katalog Materiil</h5>
 
               <!-- Pie Chart -->
-              <canvas id="pieChart1" style="max-height: 355px;"></canvas>
+              <canvas id="pieChart1" style="max-height: 400px;"></canvas>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
                   new Chart(document.querySelector('#pieChart1'), {
@@ -570,7 +574,7 @@ if (!isset($_SESSION['username'])) {
               <h5 class="card-title">Kodifikasi</h5>
 
               <!-- Bar Chart -->
-              <canvas id="barChart" style="max-height: 360px;"></canvas>
+              <canvas id="barChart" style="max-height: 400px;"></canvas>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
                   new Chart(document.querySelector('#barChart'), {
@@ -978,7 +982,7 @@ if (!isset($_SESSION['username'])) {
                   new ApexCharts(document.querySelector("#donutChart2"), {
                     series: [<?= $aktif ?>, <?= $tidak_aktif ?>],
                     chart: {
-                      height: 350,
+                      height: 400,
                       type: 'donut',
                       toolbar: {
                         show: false

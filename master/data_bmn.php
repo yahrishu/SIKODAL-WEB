@@ -288,9 +288,14 @@ session_start();
               <i class="bi bi-circle"></i><span>Data Komiditi</span>
             </a>
           </li>
-           <li>
+          <li>
             <a href="data_indhan.php">
               <i class="bi bi-circle"></i><span>Data Indhan</span>
+            </a>
+          </li>
+          <li>
+            <a href="data_alutsista.php">
+              <i class="bi bi-circle"></i><span>Data Alutsista</span>
             </a>
           </li>
         </ul> 
@@ -349,6 +354,18 @@ session_start();
         </ul> 
       </li><!-- End Tables Nav -->
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav6" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Management User</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav6" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="data_user.php">
+              <i class="bi bi-circle"></i><span>User Pengguna</span>
+            </a>
+          </li>
+        </ul> 
+      </li><!-- End Tables Nav -->
+      <li class="nav-item">
         <a href="#" class="nav-link" onclick="showMessage()">
           <i class="bi bi-info"></i><span>Info</span>
         </a>
@@ -359,11 +376,10 @@ session_start();
       <script>
       function showMessage() {
         Swal.fire({
-          title: 'Created By',
+          title: 'Developer By',
           html: `
             <div style="text-align:center;">
               <img src="assets/img/kemhanlogo.png" alt="Logo 1" width="80" style="margin:5px;">
-              <img src="assets/img/swj.png" alt="Logo 2" width="60" style="margin:5px;">
             </div>
             <br>
             Cahyadi Adiwijaya, S.Kom., M.Si(Han)<br>
@@ -418,9 +434,10 @@ session_start();
                         <th>SAT</th>
                         <th>URAIAN</th>
                         <th>KODEFIKASI SISTEM NSN</th>
+                        <th>INC</th>
                         <th>FSG</th>
                         <th>FSC</th>
-                        <th>FSG FSC</th>
+                        <th>IIG</th>
                     </tr>
                     <tr>
                         <th></th>
@@ -432,10 +449,11 @@ session_start();
                         <th><select id="filter-KODEFIKASI_BMN" style="width: 100%"></select></th>
                         <th><select id="filter-SAT" style="width: 100%"></select></th>
                         <th><select id="filter-URAIAN" style="width: 100%"></select></th>
-                        <th><select id="filter-KODEFIKASI_SISTEM_NSN" style="width: 100%"></select></th>
+                        <th><select id="filter-INC" style="width: 100%"></select></th>
+                        <th><select id="filter-FSG" style="width: 100%"></select></th>
                         <th><select id="filter-FSG" style="width: 100%"></select></th>
                         <th><select id="filter-FSC" style="width: 100%"></select></th>
-                        <th><select id="filter-FSG_FSC" style="width: 100%"></select></th>
+                        <th><select id="filter-IIG" style="width: 100%"></select></th>
                     </tr>
                     </thead>
                 <tbody>
@@ -451,6 +469,11 @@ session_start();
                 <td class="last">
                   <a href="export_pdf_bmn.php" class="btn btn-danger" target="_blank">
                       <i class="bi bi-file-pdf-fill"></i> Pdf
+                  </a>
+                </td>
+                <td class="last">
+                  <button type="button" class="btn btn-warning" data-id="" data-toggle="modal" data-target="#dataModal2">
+                      <i class="bi bi-cloud-upload-fill"></i> Import</i></button>
                   </a>
                 </td>
                 <!-- -->
@@ -473,6 +496,32 @@ session_start();
                       </div>
                   </div>
                 </div>
+                <div id="dataModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Import Data BMN</h5>
+                            
+                        </div>
+                          <div class="modal-body" id="detail_import">
+                              <form action="import_bmn.php" method="POST" enctype="multipart/form-data">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">FILE IMPORT</label>
+                                          <div class="col-sm-8">
+                                            <input type="file" name="uploadfilebmn" id="uploadfilebmn" multiple class="form-control" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" >
+                                            <a href="download.php?file=bmn.xlsx">Download Format Import Excel</a>
+                                          </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="submit" class="btn btn-primary pull-right">Save</a></button>
+                                    </div>            
+                              </form>
+                          </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+              </div>
               <script>
                 $(document).ready(function () {
                     $(document).on('click', '.view_data', function () {
@@ -557,8 +606,8 @@ session_start();
                     $(document).ready(function() {
                         var columnNames = [
                            "view", "GOL", "BID", "KEL", "SUB_KEL", "SUB_SUB_KEL", 
-                            "KODEFIKASI_BMN", "SAT", "URAIAN", "KODIFIKASI_SISTEM_NSN", 
-                            "FSG", "FSC", "FSG_FSC"
+                            "KODEFIKASI_BMN", "SAT", "URAIAN", "KODIFIKASI_SISTEM_NSN", "INC",
+                            "FSG", "FSC", "IIG"
                         ];
 
                         var table = $('#example1').DataTable({
@@ -584,9 +633,10 @@ session_start();
                                 { data: "SAT" },
                                 { data: "URAIAN" },
                                 { data: "KODIFIKASI_SISTEM_NSN" },
+                                { data: "INC" },
                                 { data: "FSG" },
                                 { data: "FSC" },
-                                { data: "FSG_FSC" }
+                                { data: "IIG" }
                                 ],
                             initComplete: function(settings, json) {
                                 var api = this.api();

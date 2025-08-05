@@ -343,6 +343,18 @@ session_start();
         </ul> 
       </li><!-- End Tables Nav -->
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav6" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Management User</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav6" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="data_user.php">
+              <i class="bi bi-circle"></i><span>User Pengguna</span>
+            </a>
+          </li>
+        </ul> 
+      </li><!-- End Tables Nav -->
+      <li class="nav-item">
         <a href="#" class="nav-link" onclick="showMessage()">
           <i class="bi bi-info"></i><span>Info</span>
         </a>
@@ -353,11 +365,10 @@ session_start();
       <script>
       function showMessage() {
         Swal.fire({
-          title: 'Created By',
+          title: 'Developer By',
           html: `
             <div style="text-align:center;">
               <img src="assets/img/kemhanlogo.png" alt="Logo 1" width="80" style="margin:5px;">
-              <img src="assets/img/swj.png" alt="Logo 2" width="60" style="margin:5px;">
             </div>
             <br>
             Cahyadi Adiwijaya, S.Kom., M.Si(Han)<br>
@@ -414,7 +425,7 @@ session_start();
                   </tr>
                   <tr>
                     <th></th>
-                    <th></th>
+                    <th><select id="filter-INC"style="width: 100%"></th>
                     <th><select id="filter-ITEM_NAME"style="width: 100%"></th>
                     <th></th>
                     <th></th>
@@ -580,90 +591,95 @@ session_start();
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <script>
-                    $(document).ready(function() {
-                        // var columnNames = [
-                        //     "INC", "LANGUAGE_CODE", "DATE_ESTABLISHED", "ITEM_NAME", "ITEM_NAME_DEFINITION_IDN", "ITEM_NAME_DEFINITION", 
-                        //     "RELATED_INC", "NMCRL_HITS"
-                        // ];
+ <script>
+$(document).ready(function() {
+    var columnNames = [
+        "VIEW", "INC", "ITEM_NAME", "ITEM_NAME_DEFINITION", 
+        "URAIAN_SINGKAT_NAMA_BARANG", "TIPE_NAMA_BARANG", 
+        "STATUS", "FIIG", "FSG_FSC"
+    ];
 
-                        var table = $('#example1').DataTable({
-                            processing: true,
-                            serverSide: true,
-                            select: true,
-                            scrollX: true,
-                            orderCellsTop: true,
-                            fixedHeader: true,
-                            
-                            ajax: {
-                                url: "server_nama_baku.php",
-                                type: "POST",
-                            error: function(e) {
-                              console.log(e);
-                            }
-                            },
-                            columns: [
-                                { data: "id", width: "50px", orderable: false,
-                                    render: function (data, type, row) {
-                                      return `
-                                      <button class="btn btn-info view_data" data-id="${data}"><i class="bi bi-info-square-fill"></i></button>
-                                      `;
-                                    }
-                                },
-                                { data: "INC" },
-                                { data: "ITEM_NAME" },
-                                { data: "ITEM_NAME_DEFINITION" },
-                                { data: "URAIAN_SINGKAT_NAMA_BARANG" },
-                                { data: "TIPE_NAMA_BARANG" },
-                                { data: "STATUS" },
-                                { data: "FIIG" },
-                                { data: "FSG_FSC" }
+    var table = $('#example1').DataTable({
+        processing: true,
+        serverSide: true,
+        select: true,
+        scrollX: true,
+        orderCellsTop: true,
+        fixedHeader: true,
+        
+        ajax: {
+            url: "server_nama_baku.php",
+            type: "POST"
+        },
+        columns: [
+            { data: "view", width: "50px", orderable: false },
+            { data: "INC" },
+            { data: "ITEM_NAME" },
+            { data: "ITEM_NAME_DEFINITION" },
+            { data: "URAIAN_SINGKAT_NAMA_BARANG" },
+            { data: "TIPE_NAMA_BARANG" },
+            { data: "STATUS" },
+            { data: "FIIG" },
+            { data: "FSG_FSC" }
+        ],
+        initComplete: function(settings, json) {
+            var api = this.api();
 
-                            ],
-                            initComplete: function(settings, json) {
-                                var api = this.api();
+            columnNames.forEach(function(colName, i) {
+                if (colName === "VIEW") return; // skip kolom view
 
-                                const select = $('#filter-ITEM_NAME');
-                                
-                                select.select2({
-                                    ajax: {
-                                        url: 'nama_baku_column_options.php',
-                                        dataType: 'json',
-                                        delay: 250,
-                                        data: function (params) {
-                                            return {
-                                                q: params.term,
-                                                page: params.page || 1
-                                            };
-                                        },
-                                        processResults: function (data, params) {
-                                            params.page = params.page || 1;
-                                            return {
-                                                results: data.results,
-                                                pagination: {
-                                                    more: data.hasMore
-                                                }
-                                            };
-                                        },
-                                        cache: true
-                                    },
-                                    placeholder: 'Cari Item Name',
-                                    minimumInputLength: 1,
-                                    allowClear: true
-                                });
+                var select = $('#filter-' + colName);
+                if (select.length === 0) return;
 
-                                select.on('select2:select', function (e) {
-                                    var data = e.params.data;
-                                    api.column(2).search(data.text).draw();
-                                });
+                select.select2({
+                    ajax: {
+                        url: 'nama_baku_column_options.php',
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term,
+                                page: params.page || 1,
+                                column: colName // kirim nama kolom ke PHP
+                            };
+                        },
+                        processResults: function (data, params) {
+                            params.page = params.page || 1;
 
-                                select.on('select2:clear', function (e) {
-                                      api.column(2).search('').draw();
-                                });
-                            }
-                        });
-                    });
-                    </script>
+                            return {
+                                results: data.results,
+                                pagination: {
+                                    more: data.pagination.more
+                                }
+                            };
+                        },
+                        cache: true
+                    },
+                    placeholder: 'Cari ' + colName,
+                    minimumInputLength: 1,
+                    allowClear: true,
+                    width: '100%'
+                });
+
+                select.on('change', function () {
+                    var val = $(this).val();
+                    if (val) {
+                        api.column(i)
+                            .search(val)
+                            .draw();
+                    } else {
+                        api.column(i)
+                            .search('')
+                            .draw();
+                    }
+                });
+            });
+        }
+    });
+});
+
+
+</script>
 
 </body>
 

@@ -361,11 +361,10 @@ session_start();
       <script>
       function showMessage() {
         Swal.fire({
-          title: 'Created By',
+          title: 'Developer By',
           html: `
             <div style="text-align:center;">
               <img src="assets/img/kemhanlogo.png" alt="Logo 1" width="80" style="margin:5px;">
-              <img src="assets/img/swj.png" alt="Logo 2" width="60" style="margin:5px;">
             </div>
             <br>
             Cahyadi Adiwijaya, S.Kom., M.Si(Han)<br>
@@ -411,23 +410,10 @@ session_start();
                 <thead>
                   <tr>
                     <th>VIEW</th>
-                    <th style="width: 100px;">NSC</th>
-                    <th style="width: 100px;">NIIN</th>
-                    <th style="width: 100px;">NIIN_</th>
-                    <th style="width: 100px;">NSN</th>
-                    <th style="width: 100px;">N_S_N</th>
-                    <th style="width: 100px;">Status</th>
-                    <th style="width: 100px;">Assignment_Date</th>
-                    <th style="width: 100px;">Last_Update_Date</th>
-                    <th style="width: 100px;">INC</th>
-                    <th style="width: 100px;">Item_Name</th>
-                    <th style="width: 100px;">TIIC</th>
-                    <th style="width: 100px;">CPV</th>
-                    <th style="width: 100px;">Replacement</th>
+                    <th style="width: 100px;">NCAGE</th>
                     <th style="width: 100px;">NCAGE_Name</th>
-                    <th style="width: 100px;">NCAGE_Status</th>
-                    <th style="width: 100px;">NCAGE_Country</th>
-                    <th style="width: 100px;">NCAGE_City</th>
+                    <th style="width: 100px;">N_S_N</th>
+                    <th style="width: 100px;">Item_Name</th>
                     <th style="width: 100px;">Reference_Number</th>
                     <th style="width: 100px;">RNFC</th>
                     <th style="width: 100px;">RNCC</th>
@@ -436,30 +422,16 @@ session_start();
                     <th style="width: 100px;">RNJC</th>
                     <th style="width: 100px;">RNAAC</th>
                     <th style="width: 100px;">DAC</th>
-                    <th style="width: 100px;">Procurement_Status</th>
-                    <th style="width: 100px;">NCAGE_Replacements</th>
                     <th style="width: 100px;">Users</th>
                     <th style="width: 100px;">CHARACTERISTIC</th>
+                    <th style="width: 100px;">GAMBAR</th>
                   </tr>
                   <tr>
                     <th></th>
-                    <th><select id="filter-NSC" style="width: 100%"></select></th>
-                    <th><select id="filter-NIIN" style="width: 100%"></select></th>
-                    <th><select id="filter-NIIN_" style="width: 100%"></select></th>
-                    <th><select id="filter-NSN" style="width: 100%"></select></th>
-                    <th><select id="filter-N_S_N" style="width: 100%"></select></th>
-                    <th><select id="filter-Status" style="width: 100%"></select></th>
-                    <th><select id="filter-Assignment_Date" style="width: 100%"></select></th>
-                    <th><select id="filter-Last_Update_Date" style="width: 100%"></select></th>
-                    <th><select id="filter-INC" style="width: 100%"></select></th>
-                    <th><select id="filter-Item_Name" style="width: 100%"></select></th>
-                    <th><select id="filter-TIIC" style="width: 100%"></select></th>
-                    <th><select id="filter-CPV" style="width: 100%"></select></th>
-                    <th><select id="filter-Replacement" style="width: 100%"></select></th>
+                    <th><select id="filter-NCAGE" style="width: 100%"></select></th>
                     <th><select id="filter-NCAGE_Name" style="width: 100%"></select></th>
-                    <th><select id="filter-NCAGE_Status" style="width: 100%"></select></th>
-                    <th><select id="filter-NCAGE_Country" style="width: 100%"></select></th>
-                    <th><select id="filter-NCAGE_City" style="width: 100%"></select></th>
+                    <th><select id="filter-N_S_N" style="width: 100%"></select></th>
+                    <th><select id="filter-Item_Name" style="width: 100%"></select></th>
                     <th><select id="filter-Reference_Number" style="width: 100%"></select></th>
                     <th><select id="filter-RNFC" style="width: 100%"></select></th>
                     <th><select id="filter-RNCC" style="width: 100%"></select></th>
@@ -468,10 +440,9 @@ session_start();
                     <th><select id="filter-RNJC" style="width: 100%"></select></th>
                     <th><select id="filter-RNAAC" style="width: 100%"></select></th>
                     <th><select id="filter-DAC" style="width: 100%"></select></th>
-                    <th><select id="filter-Procurement_Status" style="width: 100%"></select></th>
-                    <th><select id="filter-NCAGE_Replacements" style="width: 100%"></select></th>
                     <th><select id="filter-Users" style="width: 100%"></select></th>
                     <th><select id="filter-CHARACTERISTIC" style="width: 100%"></select></th>
+                    <th><select id="filter-GAMBAR" style="width: 100%"></select></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -591,12 +562,9 @@ session_start();
   <script>
                     $(document).ready(function() {
                         var columnNames = [
-                            "VIEW", "NSC", "NIIN", "NIIN_", "NSN", "N_S_N", "Status", "Assignment_Date", 
-                            "Last_Update_Date", "INC", "Item_Name", "TIIC", "CPV", "Replacement", 
-                            "NCAGE_Name", "NCAGE_Status", "NCAGE_Country", "NCAGE_City", 
+                            "VIEW", "NCAGE", "NCAGE_Name", "N_S_N", "Item_Name", 
                             "Reference_Number", "RNFC", "RNCC", "RNVC", "RNSC", "RNJC", 
-                            "RNAAC", "DAC", "Procurement_Status", "NCAGE_Replacements", 
-                            "Users", "CHARACTERISTIC"
+                            "RNAAC", "DAC", "Users", "CHARACTERISTIC", "GAMBAR"
                         ];
 
                         var table = $('#example1').DataTable({
@@ -613,23 +581,10 @@ session_start();
                             },
                             columns: [
                                 { data: "view", width: "50px", orderable: false },
-                                { data: "NSC" },
-                                { data: "NIIN" },
-                                { data: "NIIN_" },
-                                { data: "NSN" },
-                                { data: "N_S_N" },
-                                { data: "Status" },
-                                { data: "Assignment_Date" },
-                                { data: "Last_Update_Date" },
-                                { data: "INC" },
-                                { data: "Item_Name" },
-                                { data: "TIIC" },
-                                { data: "CPV" },
-                                { data: "Replacement" },
+                                { data: "NCAGE" },
                                 { data: "NCAGE_Name" },
-                                { data: "NCAGE_Status" },
-                                { data: "NCAGE_Country" },
-                                { data: "NCAGE_City" },
+                                { data: "N_S_N" },
+                                { data: "Item_Name" },
                                 { data: "Reference_Number" },
                                 { data: "RNFC" },
                                 { data: "RNCC" },
@@ -638,10 +593,9 @@ session_start();
                                 { data: "RNJC" },
                                 { data: "RNAAC" },
                                 { data: "DAC" },
-                                { data: "Procurement_Status" },
-                                { data: "NCAGE_Replacements" },
                                 { data: "Users" },
-                                { data: "CHARACTERISTIC" }
+                                { data: "CHARACTERISTIC" },
+                                { data: "GAMBAR" }
                             ],
                             initComplete: function(settings, json) {
                                 var api = this.api();
