@@ -8,7 +8,7 @@ include "koneksi.php";
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>SIKODAL - PUSKOD BARANAHAN KEMHAN</title>
+  <title>SIKODAL - PUSKOD Baharwat KEMHAN</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -152,7 +152,7 @@ include "koneksi.php";
         }
     </style>
     <footer class="text-center py-3 text-putih">
-        &copy; <?php echo date("Y"); ?> <strong>SIKODAL - PUSKOD BARANAHAN KEMHAN</strong>. All Rights Reserved.
+        &copy; <?php echo date("Y"); ?> <strong>SIKODAL - PUSKOD BAHARWAT KEMHAN</strong>. All Rights Reserved.
     </footer>
     
   

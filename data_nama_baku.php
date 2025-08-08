@@ -9,7 +9,7 @@ session_start();
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>SIKODAL - PUSKOD BARANAHAN KEMHAN</title>
+  <title>SIKODAL - PUSKOD BAHARWAT KEMHAN</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -456,7 +456,7 @@ session_start();
                               <!-- Data akan dimuat di sini -->
                           </div>
                           <div class="modal-footer">
-                              <button type="button" id="next-modal" class="btn btn-secondary" data-dismiss="modal" class="close"><i>Group Class / H2</i></button>
+                              <button type="button" id="next-modal" class="btn btn-secondary" data-dismiss="modal" class="close"><i>Group Class</i></button>
                           </div>
                       </div>
                   </div>
@@ -465,7 +465,7 @@ session_start();
                   <div class="modal-dialog modal-xl" role="document">
                       <div class="modal-content">
                           <div class="modal-header">
-                              <h5 class="modal-title"><i>GROUP CLASS (H2)</i></h5>
+                              <h5 class="modal-title"><i>GROUP CLASS</i></h5>
                           </div>
                           <div class="modal-body" id="detail_group_class">
                               <!-- Data akan dimuat di sini -->
@@ -533,7 +533,7 @@ session_start();
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>Pusat Kodifikasi Baranahan Kemhan</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Pusat Kodifikasi Baharwat Kemhan</span></strong>. All Rights Reserved
     </div>
 
   </footer><!-- End Footer -->

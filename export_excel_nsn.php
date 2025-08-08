@@ -17,9 +17,9 @@ $sheet = $spreadsheet->getActiveSheet();
 
 // Header kolom
 $headers = [
-    'MANUFACTURER_NAME', 'NCAGE', 'REFERENCE', 'FSC', 'NIIN', 'NSN',
-    'INC', 'TYPE', 'FIIG', 'ITEM_NAME', 'COUNTRY',
-    'DATE_OF_NIIN_ASSIGNMENT', 'DATE_LAST_CHANGE','RNFC', 'RNCC', 'RNVC', 'DAC',
+    'Manufacturer_Name', 'NCAGE', 'Reference', 'NSC', 'NIIN', 'NSN',
+    'INC', 'Type', 'FIIG', 'Item_Name', 'Country',
+    'Date_of_NIIN_Assignment', 'Date_last_change','RNFC', 'RNCC', 'RNVC', 'DAC',
     'RNAAC', 'RNSC'
 ];
 

@@ -7,7 +7,7 @@ include "koneksi.php";
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>PUSKOD BARANAHAN KEMHAN</title>
+  <title>PUSKOD BAHARWAT KEMHAN</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -461,42 +461,42 @@ include "koneksi.php";
                       data: [{
                         value: 
                         <?php 
-							$jumlah_1 = mysqli_query($koneksi,"select * from ncage where TOEC like '%I%'");
-							echo mysqli_num_rows($jumlah_1);
-						?>,
-                          name: 'I : AC/135'
+                          $jumlah_1 = mysqli_query($koneksi,"select * from ncage where TOEC like '%I%'");
+                          echo mysqli_num_rows($jumlah_1);
+                        ?>,
+                          name: 'I : AC/135 '
                         },
                         {
                           value: 
                         <?php 
-							$jumlah_2 = mysqli_query($koneksi,"select * from ncage where TOEC like '%E%'");
-							echo mysqli_num_rows($jumlah_2);
-						?>,
+                          $jumlah_2 = mysqli_query($koneksi,"select * from ncage where TOEC like '%E%'");
+                          echo mysqli_num_rows($jumlah_2);
+                        ?>,
                           name: 'E : Non-US Manufactures'
                         },
                         {
                           value: 
                         <?php 
-							$jumlah_3 = mysqli_query($koneksi,"select * from ncage where TOEC like '%F%'");
-							echo mysqli_num_rows($jumlah_3);
-						?>,
-                          name: 'F : Non-manufacturers'
+                        $jumlah_3 = mysqli_query($koneksi,"select * from ncage where TOEC like '%F%'");
+                        echo mysqli_num_rows($jumlah_3);
+                      ?>,
+                          name: 'F : Entitas Non Manufaktur yang tidak memproduksi '
                         },
                         {
                           value: 
                         <?php 
-							$jumlah_4 = mysqli_query($koneksi,"select * from ncage where TOEC like '%G%'");
-							echo mysqli_num_rows($jumlah_4);
-						?>,
-                          name: 'G : Service providers'
+                        $jumlah_4 = mysqli_query($koneksi,"select * from ncage where TOEC like '%G%'");
+                        echo mysqli_num_rows($jumlah_4);
+                      ?>,
+                          name: 'G : Organisasi Layanan/Lembaga'
                         },
                         {
                           value: 
                         <?php
-							$jumlah_5 = mysqli_query($koneksi,"select * from ncage where TOEC like '%H%'");
-							echo mysqli_num_rows($jumlah_5);
-						?>,
-                          name: 'H : Goverenment'
+                        $jumlah_5 = mysqli_query($koneksi,"select * from ncage where TOEC like '%H%'");
+                        echo mysqli_num_rows($jumlah_5);
+                      ?>,
+                          name: 'H : Pemerintah'
                         }
                       ],
                       emphasis: {
@@ -698,7 +698,7 @@ include "koneksi.php";
   </main><!-- End #main -->
    <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>Pusat Kodifikasi Baranahan Kemhan</span></strong>. All Rights Reserved    
+      &copy; Copyright <strong><span>Pusat Kodifikasi Baharwat Kemhan</span></strong>. All Rights Reserved    
     </div>
   </footer><!-- End Footer -->
 

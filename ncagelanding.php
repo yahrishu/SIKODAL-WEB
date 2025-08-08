@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>PUSKOD BARANAHAN KEMHAN</title>
+  <title>PUSKOD Baharwat KEMHAN</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -220,7 +220,7 @@
   </main><!-- End #main -->
    <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>Pusat Kodifikasi Baranahan Kemhan</span></strong>. All Rights Reserved    
+      &copy; Copyright <strong><span>Pusat Kodifikasi Baharwat Kemhan</span></strong>. All Rights Reserved    
     </div>
   </footer><!-- End Footer -->
 
@@ -364,34 +364,34 @@
                         var info_id = $(this).data('id');
                         switch (info_id) {
                           case "A" : 
-                            result = "ACTIVE RECORD: The entity is currently active";
+                            result = "CATATAN AKTIF: Entitas saat ini aktif";
                             break;
                           case "Y" :
-                            result = "ACTIVE SPECIALIZED USE RECORD: NCAGE Code assigned to an entity still actively engaged in business operations; however, the entity no longer wishes to be considered for contracting OR SELLS ITS PRODUCTS ONLY THROUGH DISTRIBUTORS. Do not use for procurement purposes.";
+                            result = "CATATAN PENGGUNAAN KHUSUS AKTIF: Kode ncage yang ditetapkan ke entitas masih terlibat aktif dalam operasi bisnis; namun, entitas tidak lagi ingin dipertimbangkan untuk mengontrak atau menjual produknya hanya melalui distributor. (Jangan gunakan untuk tujuan pengadaan).";
                             break;
                           case "H" : 
-                            result = "OBSOLETE / Invalid - Entity has been discontinued, cancelled without replacement and/or CAGE/NCAGE no longer required.";
+                            result = "USANG / Tidak Valid - Entitas telah dihentikan, dibatalkan tanpa penggantian dan/atau CAGE/NCAGE tidak lagi diperlukan.";
                             break;
                           case "R" :
-                            result = "REPLACED OR CONVERTED RECORD, WITH REPLACEMENT: Entity discontinued and replaced by one or more successor firm(s) or the NCAGE has been converted from a generic code with an 'S' prefix to a national NCAGE assigned by the nation where the entity is located. Refer to replacement NCAGE Code(s).";
+                            result = "CATATAN DIGANTI ATAU DIKONVERSI, DENGAN PENGGANTIAN: Entitas dihentikan dan digantikan oleh satu atau lebih perusahaan penerus atau NCAGE telah dikonversi dari kode generik dengan awalan S ke NCAGE nasional yang ditetapkan oleh negara di mana entitas berada. Lihat Kode NCAGE pengganti.";
                             break;
                           case "E" :
-                            result = "ACTIVE RECORD BUT DEBARRED IN USA: The entity shown is debarred, suspended or proposed for debarment in the U.S. NOTE: After the eligibility of the entity has been reinstated, the status code will be changed to indicate that the entity is active. Debarred NCAGEs may be considered active records for all countries except the U.S. and the U.S. will assign NSNs to debarred NCAGEs at the request of other countries.";
+                            result = "CATATAN AKTIF TETAPI DILARANG DI AS: Entitas yang ditampilkan dilarang, ditangguhkan atau diusulkan untuk dilarang di AS Catatan: Setelah kelayakan entitas dipulihkan, kode status akan diubah ke Y untuk menunjukkan bahwa entitas aktif. NCAGE yang dicabut dapat dipertimbangkan catatan aktif untuk semua negara kecuali AS dan AS akan menetapkan NSN untuk melarang NCAGE atas permintaan negara lain.";
                             break;
                           case "U" :
-                            result = "ACTIVE SPECIALIZED USE RECORD: Code is assigned to an entity that represents other various companies for various reasons. The compnay being represented will usually have their own specific NCAGE Code assigned. (Do not use for cataloging purposes). Note: For US use only";
+                            result = "REKAMAN PENGGUNAAN KHUSUS AKTIF: Kode ditetapkan ke entitas yang mewakili perusahaan lain karena berbagai alasan. Perusahaan yang diwakili biasanya akan memiliki Kode NCAGE khusus mereka sendiri yang ditetapkan. (Jangan gunakan untuk tujuan katalog). Catatan: Hanya untuk penggunaan AS";
                             break;
                           case "T" :
-                            result = "ACTIVE SPECIALIZED USE RECORD: Entity is a Joint Venture Comany.";
+                            result = "CATATAN PENGGUNAAN KHUSUS AKTIF: Entitas adalah Perusahaan Patungan. Catatan: Hanya untuk penggunaan SPANYOL";
                             break;
                           case "W" :
-                            result = "ACTIVE SPECIALIZED USE RECORD: NCAGE Code assigned to an individual employed by a company where that induvidual performs contrated work in his own name separate from the company location. Address on this record may by different than the address of the company itself. (Do not use for cataloging purposes). Note: For US use only";
+                            result = "CATATAN PENGGUNAAN KHUSUS AKTIF: Kode ncage ditetapkan untuk individu dipekerjakan oleh perusahaan di mana individu tersebut melakukan pekerjaan kontrak sendiri nama terpisah dari lokasi perusahaan. Alamat pada catatan ini mungkin berbeda daripada alamat perusahaan itu sendiri. (Jangan gunakan untuk tujuan katalog). Catatan: Hanya untuk penggunaan AS.";
                             break;
                           case "M" :
-                            result = "ACTIVE SPECIALIZED USE RECORD: NCAGE Code is referenced to a special numbering system, developed by the Government, used in conjunction with the identification of codification data in the TIR. This code is used only by Canada, Denmark and the United States. Note: For US use only";
+                            result = "CATATAN PENGGUNAAN KHUSUS AKTIF: Kode ncage dirujuk ke sistem penomoran, yang dikembangkan oleh Pemerintah, digunakan bersama dengan identifikasi data kodifikasi di NCS. Kode ini hanya digunakan oleh Kanada, Denmark dan Amerika Serikat. Catatan: Hanya untuk penggunaan AS.";
                             break;
                           case "C" :
-                            result = "ACTIVE SPEZIALIZED USE RECORD: Do not use for codification purposes. Use the NCAGE code as indicated. Used by the procurement officials in cases where the design control entity is different form the manufacturer. Note: For US use only";
+                            result = "CATATAN PENGGUNAAN KHUSUS AKTIF: Jangan gunakan untuk tujuan kodifikasi. Gunakan Kode NCAGE seperti yang ditunjukkan. Digunakan oleh pejabat pengadaan dalam kasus di mana Entitas kontrol desain berbeda dari pabrikan. Catatan: Hanya untuk penggunaan Inggris dan AS.";
                             break;
                           default :
                             result = "ID TIDAK DITEMUKAN";
@@ -404,7 +404,7 @@
                         });
                     });
 
-                    $("#example1").on("click", ".info-toec", function() {
+                   $("#example1").on("click", ".info-toec", function() {
                       var result = "";
                         var info_id = $(this).data('id');
                         switch (info_id) {
@@ -412,28 +412,28 @@
                             result = "Non-US Manufactures";
                             break;
                           case "G" :
-                            result = "Service providers - Organisational entities that provide intangible services rather than products, such as the following, Service organisations, Professional organisations, including engineering, construction and mining firms, Banks and universities, Providers of services, including consultation, training, research studies, These NCAGEs may be assigned to individuals.";
+                            result = "Penyedia Layanan, Organisasi Layanan, Organisasi Profesional, Termasuk Teknik, Konstruksi, dan Pertambangan, Bank, Universitas, Konsultan, Pelatih, dll.";
                             break;
                           case "H" : 
-                            result = "OBSOLETE / Invalid";
+                            result = "Pemerintah, Departemen Atau unit, termasuk Organisasi militer.";
                             break;
                           case "R" :
                             result = "REPLACED OR CONVERTED RECORD, WITH REPLACEMENT";
                             break;
                           case "F" :
-                            result = "Non-manufacturers - Entities of the following types which do not manufacture: - Vendors/distributors - Sales offices - Retail establishments -Wholesale or jobbing establishments";
+                            result = "Entitas Non Manufaktur yang tidak memproduksi (Vendor, Distibutor, Kantor Sales, Perusahaan Ritel, Perusahaan Grosir)";
                             break;
                           case "A" :
-                            result = "US/Canada manufacturers";
+                            result = "Pabrikan AS/Kanada";
                             break;
                           case "I" :
-                            result = "AD/135 allocated special codes (example: IREF0)";
+                            result = "AC/135 mengalokasikan Kode Khusus (Exampele : IREF0)";
                             break;
                           case "C" :
-                            result = "Civilian Standards and Standards Organisations, including non-military government standards and standards organisations(example: ISO, DIN, BS, ANSI, etc.)";
+                            result = "Standar dan Standarisasi Sipil, Termasuk Standar dan Organisasi Pemerintah Organisasi Non-militer (ISO,DIN, BS,ANSI, dll)";
                             break;
                           case "M" :
-                            result = "Military Standards and Standards Organisations (example: STANAGS, MILSPECs, DEFSTANs, etc)";
+                            result = "Organisasi Standar dan Standar Militer (Example : STANAGS, MILSPECs,DEFSTANs,etc)";
                             break;
                           default :
                             result = "ID TIDAK DITEMUKAN";

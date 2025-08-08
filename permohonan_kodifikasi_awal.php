@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>PUSKOD BARANAHAN KEMHANe</title>
+  <title>PUSKOD BAHARWAT KEMHAN</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -63,7 +63,7 @@
                 }
                 </style>
                 <a href="#" class="logo d-flex align-items-center w-auto">
-                    <span class="d-none d-lg-block text-merah"><center>PUSKOD BARANAHAN KEMHAN</center></span>
+                    <span class="d-none d-lg-block text-merah"><center>PUSKOD BAHARWAT KEMHAN</center></span>
                 </a>
               </div><!-- End Logo -->
 
@@ -76,34 +76,26 @@
                     <p class="text-center small"></p> -->
                   </div>
 
-                    <form action="proses_cari_ncage.php" method="POST" class="row g-3 needs-validation" novalidate>
-
-                        <div class="col-12">
-                        <label for="yourUsername" class="form-label">KODE NCAGE</label>
+                    <form id="formNcage" class="row g-3 needs-validation" novalidate>
+                      <div class="col-12">
+                        <label for="namaperusahaan" class="form-label">NAMA PERUSAHAAN</label>
                         <div class="input-group has-validation">
-                            <input type="text" name="NCAGE" class="form-control" id="yourUsername" required>
-                            <div class="invalid-feedback">Inputkan Kode NCAGE Perusahaan Anda.</div>
+                          <input type="text" name="Entity_Name" class="form-control" id="namaperusahaan" required>
+                          <div class="invalid-feedback">Silakan masukkan Nama Perusahaan terlebih dahulu.</div>
                         </div>
-                        </div>
+                      </div>
 
-                        <!-- <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                        </div>
-                        </div> -->
-                        <div class="col-12">
+                      <div class="col-12">
                         <button class="btn btn-danger w-100" type="submit">Cari</button>
-                        </div>
-                        <!-- <div class="col-12">
-                        <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
-                        </div> -->
+                      </div>
                     </form>
+
+                    <!-- Modal -->
                     <div class="modal fade" id="modalNcage" tabindex="-1" aria-labelledby="modalNcageLabel" aria-hidden="true">
                       <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                           <div class="modal-header bg-danger text-white">
-                            <h5 class="modal-title" id="modalNcageLabel">Hasil Pencarian NCAGE</h5>
+                            <h5 class="modal-title" id="modalNcageLabel">Hasil Pencarian</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                           </div>
                           <div class="modal-body">
@@ -111,70 +103,95 @@
                               <thead>
                                 <tr>
                                   <th>Kode NCAGE</th>
-                                  <th>Nama Entitas</th>
+                                  <th>Nama Perusahaan</th>
                                   <th>Negara</th>
                                   <th>Alamat</th>
                                 </tr>
                               </thead>
                               <tbody></tbody>
                             </table>
-                            <div id="ncageLink" class="mt-3"></div>
+                            <div id="ncageLink" class="mt-3 text-center"></div>
                           </div>
                         </div>
                       </div>
                     </div>
+
                     <script>
-                      document.querySelector("form").addEventListener("submit", function(e) {
+                    document.addEventListener("DOMContentLoaded", function () {
+                      const form = document.getElementById("formNcage");
+                      const input = document.getElementById("namaperusahaan");
+
+                      form.addEventListener("submit", function (e) {
                         e.preventDefault();
 
-                        const kode = document.querySelector('input[name="NCAGE"]').value;
+                        const entityName = input.value.trim();
+                        const tbody = document.querySelector('#ncageTable tbody');
+                        const linkContainer = document.getElementById("ncageLink");
 
+                        if (!entityName) {
+                          input.classList.add("is-invalid");
+                          input.focus();
+                          return;
+                        } else {
+                          input.classList.remove("is-invalid");
+                        }
+
+                        // AJAX ke proses_cari_ncage.php
                         fetch("proses_cari_ncage.php", {
                           method: "POST",
-                          body: new URLSearchParams({ NCAGE: kode })
+                          headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                          },
+                          body: "Entity_Name=" + encodeURIComponent(entityName)
                         })
                         .then(response => response.json())
                         .then(data => {
-                          const tbody = document.querySelector("#ncageTable tbody");
-                          const ncageLink = document.getElementById("ncageLink");
                           tbody.innerHTML = "";
-                          ncageLink.innerHTML = "";
+                          linkContainer.innerHTML = "";
 
                           if (data.length > 0) {
-                            // Jika ditemukan, isi tabel
-                            data.forEach(row => {
-                              const tr = document.createElement("tr");
-                              tr.innerHTML = `
-                                <td>${row.NCAGE}</td>
-                                <td>${row.Entity_Name}</td>
-                                <td>${row.Country}</td>
-                                <td>${row.Street}</td>
+                            let html = '';
+                            data.forEach(function(item) {
+                              html += `
+                                <tr>
+                                  <td>${item.NCAGE}</td>
+                                  <td>${item.Entity_Name}</td>
+                                  <td>${item.Country}</td>
+                                  <td>${item.Street}</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="4" class="text-center">
+                                    <a href="registrasi_kodifikasi.php?ncage=${encodeURIComponent(item.NCAGE)}&namaperusahaan=${encodeURIComponent(item.Entity_Name)}" class="btn btn-success">
+                                      Lanjut Registrasi Kodifikasi
+                                    </a>
+                                  </td>
+                                </tr>
                               `;
-                              tbody.appendChild(tr);
                             });
-
-                            // Tambah tombol lanjut
-                            ncageLink.innerHTML = `
-                              <a href="permohonan_kodifikasi_awal.php?ncage=${encodeURIComponent(kode)}" class="btn btn-success">
-                                Lanjut Registrasi Kodifikasi
-                              </a>
-                            `;
+                            tbody.innerHTML = html;
                           } else {
-                            // Jika tidak ditemukan, tampilkan opsi daftar
-                            ncageLink.innerHTML = `
-                              <a href="daftar_ncage.php?kode=${encodeURIComponent(kode)}" class="btn btn-warning">
-                                Daftarkan NCAGE Baru
-                              </a>
+                            tbody.innerHTML = `
+                              <tr>
+                                <td colspan="4" class="text-center text-danger">
+                                  Data tidak ditemukan.
+                                </td>
+                              </tr>
+                            `;
+                            linkContainer.innerHTML = `
+                              <a href="daftar_ncage.php" class="btn btn-primary">Daftar NCAGE Baru</a>
                             `;
                           }
 
                           // Tampilkan modal
-                          const modal = new bootstrap.Modal(document.getElementById("modalNcage"));
-                          modal.show();
+                          const ncageModal = new bootstrap.Modal(document.getElementById('modalNcage'));
+                          ncageModal.show();
+                        })
+                        .catch(error => {
+                          console.error("Error:", error);
                         });
                       });
+                    });
                     </script>
-
                 </div>
               </div>
 
